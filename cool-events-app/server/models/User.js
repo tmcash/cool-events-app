@@ -2,8 +2,6 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
-
-//Check - From State exercise 18*
 const userSchema = new Schema({
   username: {
     type: String,
@@ -21,18 +19,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  },
-  thoughts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-    },
-  ],
+  }
 });
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
+    const saltRounds = 6;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
 
