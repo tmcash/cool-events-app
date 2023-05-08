@@ -3,6 +3,11 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> dde0aad7b59cc1f65a012899f71e24f19d8570db
 const userSchema = new Schema({
   username: {
     type: String,

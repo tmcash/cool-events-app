@@ -1,6 +1,7 @@
 import decode from 'jwt-decode';
 
 class AuthService {
+<<<<<<< HEAD
   getProfile() {
     return decode(this.getToken());
   }
@@ -39,3 +40,43 @@ class AuthService {
 }
 
 export default new AuthService();
+=======
+getProfile() {
+    return decode(this.getToken());
+}
+
+loggedIn() {
+    const token = this.getToken();
+
+    return token && !this.isTokenExpired(token) ? true : false;
+}
+
+isTokenExpired(token) {
+
+    const decoded = decode(token);
+
+    if (decoded.exp < Date.now() / 1000) {
+    localStorage.removeItem('id_token');
+    return true;
+    }
+
+    return false;
+}
+
+getToken() {
+    return localStorage.getItem('id_token');
+}
+
+login(idToken) {
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
+}
+
+logout() {
+    localStorage.removeItem('id_token');
+    window.location.reload();
+}
+}
+let AuthServiceInstance = new AuthService ();
+export default AuthServiceInstance;
+>>>>>>> dde0aad7b59cc1f65a012899f71e24f19d8570db
