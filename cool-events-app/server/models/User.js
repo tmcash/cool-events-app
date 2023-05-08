@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 
 
-//Check - From State exercise 18*
+
 const userSchema = new Schema({
   username: {
     type: String,
