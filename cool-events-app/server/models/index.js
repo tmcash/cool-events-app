@@ -1,7 +1,6 @@
 
 const Events = require('./Events');
-const Calendar = require('./Calendar');
-const Login = require('./Login');
+const User = require('./User');
 
-module.exports = { Events, Calendar, Login };
+module.exports = { Events, User };
 
