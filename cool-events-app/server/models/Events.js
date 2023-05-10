@@ -1,11 +1,9 @@
 
 const { Schema, model } = require('mongoose');
+const Note = require('./Note');
 // const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema({
-  eventId: {
-    type: 
-},
 
   eventText: {
     type: String,
@@ -26,18 +24,10 @@ const eventSchema = new Schema({
     //   return dateFormat(date);
     // },
   },
-  notes: [
-    {
-      notesText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-    },
-  ],
-}  );
+  notes: 
+  [ Note ],
+});
 
-const Event = model('Event', eventSchema);
+const Events = model('Event', eventSchema);
 
-module.exports = Event;
+module.exports = Events;
