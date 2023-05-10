@@ -21,97 +21,94 @@ const resolvers = {
         // },
     },
     Mutation: {
-        Mutation: {
-            addUser: async (parent, { username, email, password }) => {
-                const user = await User.create({ username, email, password });
-                const token = signToken(user);
-                return { token, user };
-            },
-            login: async (parent, { email, password }) => {
-                const user = await User.findOne({ email });
-
-                if (!user) {
-                    throw new AuthenticationError('No user found with this email address');
-                }
-
-                const correctPw = await user.isCorrectPassword(password);
-
-                if (!correctPw) {
-                    throw new AuthenticationError('Incorrect credentials');
-                }
-
-                const token = signToken(user);
-
-                return { token, user };
-            },
-            addEvent: async (parent, { eventText }, context) => {
-                if (context.user) {
-                    const event = await Event.create({
-                        eventText,
-                        eventAuthor: context.user.email,
-                    });
-
-                    await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        { $addToSet: { events: event._id } }
-                    );
-
-                    return event;
-                }
-                throw new AuthenticationError('You need to be logged in!');
-            },
-            // addComment: async (parent, { thoughtId, commentText }, context) => {
-            //     if (context.user) {
-            //         return Event.findOneAndUpdate(
-            //             { _id: EventId },
-            //             // {
-            //             //     $addToSet: {
-            //             //         notes: { noteText, noteAuthor: context.user.email },
-            //             //     },
-            //             // },
-            //             {
-            //                 new: true,
-            //                 runValidators: true,
-            //             }
-            //         );
-            //     }
-            //     throw new AuthenticationError('You need to be logged in!');
-            // },
-            removeEvent: async (parent, { eventId }, context) => {
-                if (context.user) {
-                    const event = await Event.findOneAndDelete({
-                        _id: eventId,
-                        eventAuthor: context.user.email,
-                    });
-
-                    await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        { $pull: { events: event._id } }
-                    );
-
-                    return event;
-                }
-                throw new AuthenticationError('You need to be logged in!');
-            },
-            removeComment: async (parent, { eventId, noteId }, context) => {
-                if (context.user) {
-                    return Event.findOneAndUpdate(
-                        { _id: eventId },
-                        // {
-                        //     // $pull: {
-                        //     //     notes: {
-                        //     //         _id: commentId,
-                        //     //         commentAuthor: context.user.email,
-                        //     //     },
-                        //     // },
-                        // },
-                        { new: true }
-                    );
-                }
-                throw new AuthenticationError('You need to be logged in!');
-            },
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
+            const token = signToken(user);
+            return { token, user };
         },
-    }
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
+        },
+        addEvent: async (parent, { eventText }, context) => {
+            if (context.user) {
+                const event = await Event.create({
+                    eventText,
+                    eventAuthor: context.user.email,
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { events: event._id } }
+                );
+
+                return event;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        // addComment: async (parent, { thoughtId, commentText }, context) => {
+        //     if (context.user) {
+        //         return Event.findOneAndUpdate(
+        //             { _id: EventId },
+        //             // {
+        //             //     $addToSet: {
+        //             //         notes: { noteText, noteAuthor: context.user.email },
+        //             //     },
+        //             // },
+        //             {
+        //                 new: true,
+        //                 runValidators: true,
+        //             }
+        //         );
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        removeEvent: async (parent, { eventId }, context) => {
+            if (context.user) {
+                const event = await Event.findOneAndDelete({
+                    _id: eventId,
+                    eventAuthor: context.user.email,
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { events: event._id } }
+                );
+
+                return event;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        removeNote: async (parent, { eventId, noteId }, context) => {
+            if (context.user) {
+                return Event.findOneAndUpdate(
+                    { _id: eventId },
+                    {
+                        $pull: {
+                            note: {
+                                _id: noteId,
+                            },
+                        },
+                    },
+                    { new: true }
+                );
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+    },
 };
 
 module.exports = resolvers;

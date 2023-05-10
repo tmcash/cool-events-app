@@ -13,10 +13,10 @@ const typeDefs = gql`
     eventText: String
     eventAuthor: String
     createdAt: String
-    notes: [note]!
+    notes: [Note]!
   }
-//do we need for notes?
-  type Notes {
+
+  type Note {
     _id: ID
     noteText: String
     noteAuthor: String

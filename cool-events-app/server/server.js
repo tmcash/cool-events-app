@@ -6,6 +6,7 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+console.log('1 -first log');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -20,6 +21,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
 app.use(express.static(path.join(__dirname, '../client/build')));
 }
+console.log('2 - second log');
 
 app.get('/', (req, res) => {
 res.sendFile(path.join(__dirname, '../client/build/index.html'));
@@ -29,6 +31,9 @@ res.sendFile(path.join(__dirname, '../client/build/index.html'));
 const startApolloServer = async (typeDefs, resolvers) => {
 await server.start();
 server.applyMiddleware({ app });
+
+console.log('3 - third log');
+
 
 db.once('open', () => {
     app.listen(PORT, () => {
