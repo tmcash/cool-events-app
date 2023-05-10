@@ -5,7 +5,8 @@ const { Schema, model } = require('mongoose');
 const eventSchema = new Schema({
   eventId: {
     type: 
-  },
+},
+
   eventText: {
     type: String,
     required: 'Please name your event',
@@ -35,7 +36,7 @@ const eventSchema = new Schema({
       },
     },
   ],
-});
+}  );
 
 const Event = model('Event', eventSchema);
 
