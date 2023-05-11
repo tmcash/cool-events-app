@@ -6,8 +6,8 @@ const resolvers = {
         events: async () => {
             return await Event.find();
         },
-        user: async (parent, { email }) => {
-            return User.findOne({ email }).populate('events');
+        user: async (parent, { username }) => {
+            return User.findOne({ username }).populate('events');
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -47,7 +47,7 @@ const resolvers = {
             if (context.user) {
                 const event = await Event.create({
                     eventText,
-                    eventAuthor: context.user.email,
+                    eventAuthor: context.user.username,
                 });
 
                 await User.findOneAndUpdate(
@@ -65,7 +65,7 @@ const resolvers = {
         //             { _id: EventId },
         //             // {
         //             //     $addToSet: {
-        //             //         notes: { noteText, noteAuthor: context.user.email },
+        //             //         notes: { noteText, noteAuthor: context.user.username },
         //             //     },
         //             // },
         //             {
@@ -80,7 +80,7 @@ const resolvers = {
             if (context.user) {
                 const event = await Event.findOneAndDelete({
                     _id: eventId,
-                    eventAuthor: context.user.email,
+                    eventAuthor: context.user.username,
                 });
 
                 await User.findOneAndUpdate(

@@ -1,0 +1,17 @@
+[
+    {
+      "email": "bkernighan@techfriends.dev",
+      "password": "password01",
+      "skills": ["AWK", "AMPL", "Unix"]
+    },
+    {
+      "email": "mkanatalexander@techfriends.dev",
+      "password": "password02",
+      "skills": ["Java", "Perl", "Apache", "Python"]
+    },
+    {
+      "email": "amiko@techfriends.dev",
+      "password": "password03",
+      "skills": ["NodeJS", "MySQL", "MongoDB", "React", "CSS-in-JS"]
+    }
+]
