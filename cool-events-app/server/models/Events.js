@@ -1,10 +1,10 @@
 
-const { Schema, model } = require('mongoose');
-const Note = require('./Note');
+const { Schema, model, Types } = require('mongoose');
+
+
 // const dateFormat = require('../utils/dateFormat');
 
 const eventSchema = new Schema({
-
   eventText: {
     type: String,
     required: 'Please name your event',
@@ -20,12 +20,15 @@ const eventSchema = new Schema({
   eventTime: {
     type: Date,
     default: Date.now,
-    // get: function (date) {
-    //   return dateFormat(date);
-    // },
   },
-  notes: 
-  [ Note ],
+  notes: { 
+    type: Schema.Types.ObjectId,
+    ref: 'Note',
+  },
+  username:{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }
 });
 
 const Event = model('Event', eventSchema);
