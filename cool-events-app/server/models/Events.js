@@ -1,5 +1,5 @@
 
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const Note = require('./Note');
 const User = require('./User');
 
@@ -21,14 +21,15 @@ const eventSchema = new Schema({
   eventTime: {
     type: Date,
     default: Date.now,
-    // get: function (date) {
-    //   return dateFormat(date);
-    // },
   },
-  notes: 
-  [ Note ],
-  username:
-  [ User ],
+  notes: { 
+    type: Schema.Types.ObjectId,
+    ref: 'Note',
+  },
+  username:{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }
 });
 
 const Event = model('Event', eventSchema);

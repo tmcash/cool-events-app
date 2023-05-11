@@ -1,6 +1,6 @@
 const db = require('../config/connection');
 const { Event } = require('../models');
-const eventSeeds = require('./thoughtSeeds.json');
+const eventSeeds = require('./eventSeeds.json');
 
 db.once('open', async () => {
   try{

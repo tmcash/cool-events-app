@@ -1,0 +1,14 @@
+[
+    {
+      "eventAuthor": "password01",
+      "eventText": "Big event"
+    },
+    {
+      "eventAuthor": "user",
+      "eventText": "Second event"
+    },
+    {
+      "eventAuthor": "user2",
+      "eventText": "Third event"
+    }
+]

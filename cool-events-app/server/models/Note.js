@@ -1,11 +1,13 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const User = require('./User');
 
 
 const noteSchema = new Schema(
   {
-    username: 
-        [ User ]
+    username: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
     ,
     email: {
       type: String,
@@ -30,5 +32,8 @@ const noteSchema = new Schema(
 //   }
 );
 
-module.exports = noteSchema;
+const Note = model('Note', noteSchema);
+
+
+module.exports = Note;
 
