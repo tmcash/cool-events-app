@@ -1,14 +1,14 @@
 [
     {
         "email": "user@mail.com",
-        "noteText": "I'm not a great programmer; I'm just a good programmer with great habits."
+        "notesText": "I'm not a great programmer; I'm just a good programmer with great habits."
     },
     {
         "email": "funTime@mail.com",
-        "noteText": "Look at this cool event."
+        "notesText": "Look at this cool event."
     },
     {
         "email": "gotmail@mail.com",
-        "noteText": "Notes about another event."
+        "notesText": "Notes about another event."
     }
 ]

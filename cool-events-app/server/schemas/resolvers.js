@@ -7,7 +7,10 @@ const resolvers = {
             return await Event.find();
         },
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('events');
+            return User.findOne({ username }).populate("events");
+        },
+        users: async (parent ) => {
+            return User.find().populate("events");
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -59,23 +62,23 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        // addComment: async (parent, { thoughtId, commentText }, context) => {
-        //     if (context.user) {
-        //         return Event.findOneAndUpdate(
-        //             { _id: EventId },
-        //             // {
-        //             //     $addToSet: {
-        //             //         notes: { noteText, noteAuthor: context.user.username },
-        //             //     },
-        //             // },
-        //             {
-        //                 new: true,
-        //                 runValidators: true,
-        //             }
-        //         );
-        //     }
-        //     throw new AuthenticationError('You need to be logged in!');
-        // },
+        addNote: async (parent, { noteText }, context) => {
+            if (context.user) {
+                return Event.findOneAndUpdate(
+                    { _id: EventId },
+                    {
+                        $addToSet: {
+                            notes: { noteText },
+                        },
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
         removeEvent: async (parent, { eventId }, context) => {
             if (context.user) {
                 const event = await Event.findOneAndDelete({

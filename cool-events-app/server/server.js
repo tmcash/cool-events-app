@@ -19,12 +19,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../cool-events-app/build')));
 }
 console.log('2 - second log');
 
 app.get('/', (req, res) => {
-res.sendFile(path.join(__dirname, '../client/build/index.html'));
+res.sendFile(path.join(__dirname, '../cool-event-app/build/index.html'));
 });
 
 

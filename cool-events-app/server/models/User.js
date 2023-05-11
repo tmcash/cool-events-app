@@ -18,7 +18,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  }
+  },
+  events:[{
+    type: Schema.Types.ObjectId,
+    ref: 'Event',
+  }]
 });
 
 userSchema.pre('save', async function (next) {

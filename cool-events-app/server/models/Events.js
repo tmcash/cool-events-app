@@ -1,7 +1,6 @@
 
 const { Schema, model, Types } = require('mongoose');
-const Note = require('./Note');
-const User = require('./User');
+
 
 // const dateFormat = require('../utils/dateFormat');
 
