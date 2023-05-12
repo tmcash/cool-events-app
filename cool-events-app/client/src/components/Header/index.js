@@ -13,9 +13,9 @@ return (
     <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
         <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+            <h1 className="m-0">Welcome to Evently</h1>
         </Link>
-        <p className="m-0">Get into the mind of a programmer.</p>
+        <p className="m-0">Make your day better one step at a time!</p>
         </div>
         <div>
         {Auth.loggedIn() ? (
@@ -32,6 +32,7 @@ return (
             <Link className="btn btn-lg btn-info m-2" to="/login">
                 Login
             </Link>
+            <br></br>
             <Link className="btn btn-lg btn-light m-2" to="/signup">
                 Signup
             </Link>

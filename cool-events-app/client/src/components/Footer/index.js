@@ -20,12 +20,12 @@ return (
         <span
             className="emoji"
             role="img"
-            aria-label="heart"
+            aria-label="Enraged Face"
             aria-hidden="false"
         >
-            ❤️
+            😡
         </span>{' '}
-        by the Tech Thoughts team.
+        by the Evently team.
         </h4>
     </div>
     </footer>

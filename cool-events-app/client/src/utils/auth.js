@@ -38,5 +38,5 @@ logout() {
 }
 }
 
-let AuthServiceInstance = new AuthService ();
-export default AuthServiceInstance();
+//let AuthServiceInstance = new AuthService ();
+export default new AuthService();
