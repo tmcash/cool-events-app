@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
@@ -8,6 +8,7 @@ import Auth from '../utils/auth';
 const Login = (props) => {
 const [formState, setFormState] = useState({ email: '', password: '' });
 const [login, { error, data }] = useMutation(LOGIN_USER);
+const navigate = useNavigate();
 
 
 const handleChange = (event) => {
@@ -29,10 +30,11 @@ const handleFormSubmit = async (event) => {
     });
 
     Auth.login(data.login.token);
+
     } catch (e) {
     console.error(e);
     }
-
+    navigate('/Calendar');
 
     setFormState({
     email: '',
