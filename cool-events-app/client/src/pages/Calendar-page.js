@@ -1,10 +1,10 @@
 import React from 'react';
-import "./App.css";
+import "../App.css";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
-import events from "./events";
+import events from "../utils/events";
 
 export default function App() {
     return (

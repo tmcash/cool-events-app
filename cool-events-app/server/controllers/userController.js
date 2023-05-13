@@ -13,7 +13,7 @@ const signupUser = async (req, res) => {
             return;
         }
         //hashed password
-        const hashedPassword = await bcrypt.hash(password, 10); //10 or 5?
+        const hashedPassword = await bcrypt.hash(password, 10); 
 
         const user = new User({ username, email, password: hashedPassword });
         const newUser = await user.save();
