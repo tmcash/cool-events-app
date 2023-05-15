@@ -14,8 +14,8 @@ return (
         <div>
         <Link className="text-light" to="/">
             <h1 className="m-0">Welcome to Evently</h1>
+            <p className="m-1">Make your day better one step at a time!</p>
         </Link>
-        <p className="m-0">Make your day better one step at a time!</p>
         </div>
         <div>
         {Auth.loggedIn() ? (
