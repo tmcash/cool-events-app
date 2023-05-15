@@ -12,6 +12,9 @@ npm install
 
 ## Usage
 
+Below is the mockup we created for the application: 
+![Mockup](/client/src/assets/mockup/EventlyMock.png)
+
 ### Main page
 
 The user has the ability to log in or sign up here. 
