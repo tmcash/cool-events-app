@@ -28,3 +28,10 @@ Upon login, the user is presented with their Calendar, which they can then edit 
 MIT License
 
 ## Creators
+
+- Tyler Cash 
+- Hannah Ferrell 
+- Elisha Ballard 
+- Scott Swiger
+- Alexis Joyner 
+- Michael Benjamin
