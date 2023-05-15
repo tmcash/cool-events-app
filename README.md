@@ -13,7 +13,7 @@ npm install
 ## Usage
 
 Below is the mockup we created for the application: 
-![Mockup](/client/src/assets/mockup/EventlyMock.png)
+![Mockup](/cool-events-app/client/src/assets/mockup/EventlyMock.png)
 
 ### Main page
 
