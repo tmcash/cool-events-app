@@ -15,6 +15,10 @@ npm install
 Below is the mockup we created for the application: 
 ![Mockup](./client/src/assets/mockup/EventlyMock.png)
 
+Link to deployed app:
+
+https://evently-app.herokuapp.com
+
 ### Main page
 
 The user has the ability to log in or sign up here. 
